@@ -124,6 +124,8 @@ flowchart TB
 
 - [[how-it-works]] —— 端到端白话总览
 - [[how-posts-are-picked]] —— 白话:帖子是怎么被选中的
+- [[operating-myths]] —— 运营迷思 vs 源码真相:逐条对源码行号
+- [[posting-guide]] —— 发帖指南:从算法机制反推发帖技巧
 - [[glossary]] —— 术语速查表
 - [[faq]] —— 常见疑问
 - [[system-architecture]] —— 技术版系统架构

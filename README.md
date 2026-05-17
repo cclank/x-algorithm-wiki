@@ -3,8 +3,8 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Wiki-x--algorithm-blue?style=for-the-badge&logo=markdown" alt="Wiki" height="28">
   <img src="https://img.shields.io/badge/Source-xai--org%2Fx--algorithm-green?style=for-the-badge&logo=github" alt="Source" height="28">
-  <img src="https://img.shields.io/badge/Knowledge_Base-27_pages-orange?style=for-the-badge&logo=obsidian" alt="Knowledge Base" height="28">
-  <img src="https://img.shields.io/badge/Content-4900%2B_lines-purple?style=for-the-badge" alt="Content" height="28">
+  <img src="https://img.shields.io/badge/Knowledge_Base-29_pages-orange?style=for-the-badge&logo=obsidian" alt="Knowledge Base" height="28">
+  <img src="https://img.shields.io/badge/Content-5900%2B_lines-purple?style=for-the-badge" alt="Content" height="28">
   <img src="https://img.shields.io/badge/Verified-Source_Code-brightgreen?style=for-the-badge" alt="Verified" height="28">
 </p>
 
@@ -15,7 +15,7 @@
 
 ## 这是什么
 
-X(Twitter)开源的 "For You" 信息流推荐系统由五大组件构成 —— 编排层、流水线框架、站内帖子库、ML 召回/排序、内容理解服务。本 wiki 把这套系统的架构与实现拆成 27 个相互链接的页面:**5 页零代码的「白话导览」** + 22 页源码级技术页。
+X(Twitter)开源的 "For You" 信息流推荐系统由五大组件构成 —— 编排层、流水线框架、站内帖子库、ML 召回/排序、内容理解服务。本 wiki 把这套系统的架构与实现拆成 29 个相互链接的页面:**7 页零代码的「白话导览」** + 22 页源码级技术页。
 
 - **想快速理解整套系统**:从白话导览读起 —— [how-it-works](guide/how-it-works.md)
 - **想看技术细节**:入口页 [system-architecture](concepts/system-architecture.md)
@@ -24,13 +24,15 @@ X(Twitter)开源的 "For You" 信息流推荐系统由五大组件构成 —— 
 
 ## 目录
 
-### 白话导览 · 先读这个(5 页,零代码)
+### 白话导览 · 先读这个(7 页,零代码)
 
 - [how-it-works](guide/how-it-works.md) — 白话总览:一条帖子怎么一步步走进你的 For You
 - [the-five-components](guide/the-five-components.md) — 五大组件速览:各组件是干嘛的、为什么需要它
 - [glossary](guide/glossary.md) — 术语速查表:召回 / 排序 / 双塔 / 候选隔离… 一句话解释
 - [faq](guide/faq.md) — 常见疑问:为什么刷到陌生人、广告怎么插进来、负反馈有什么用
 - [how-posts-are-picked](guide/how-posts-are-picked.md) — 白话:帖子是怎么被选中的(选帖过程)
+- [operating-myths](guide/operating-myths.md) — 运营迷思 vs 源码真相:六个流行运营说法,逐条对源码行号
+- [posting-guide](guide/posting-guide.md) — 发帖指南:从算法机制反推发帖技巧,每条带源码出处与示例
 
 ### 总览(1 页)
 
@@ -78,10 +80,10 @@ X(Twitter)开源的 "For You" 信息流推荐系统由五大组件构成 —— 
 
 | 指标 | 数值 |
 |------|------|
-| **白话导览页** | 5 |
+| **白话导览页** | 7 |
 | **概念页面** | 17 |
 | **实体页面** | 5 |
-| **总行数** | 5500+ |
+| **总行数** | 5900+ |
 | **源码版本** | `xai-org/x-algorithm` @ `0bfc279`(2026-05-15 release) |
 | **最后更新** | 2026-05-17 |
 
@@ -94,7 +96,7 @@ X(Twitter)开源的 "For You" 信息流推荐系统由五大组件构成 —— 
 - 复杂页面附 FAQ;统一「相关页面」交叉引用
 - Wiki `[[links]]` 交叉链接,支持 Obsidian 导航
 - 核对中发现的源码/文档出入已在 [changelog](changelog/2026-05-16-initial-creation.md) 记录
-- 另有 5 页「白话导览」(`guide/`):零代码、多类比,面向快速理解,与技术页双向链接
+- 另有 7 页「白话导览」(`guide/`):零代码、多类比,面向快速理解,与技术页双向链接
 
 ## 使用方式
 

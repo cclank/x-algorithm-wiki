@@ -2,7 +2,7 @@
 
 > 内容目录。每个 wiki 页面按类型与分类列出,附一行摘要。
 > 查询前先读此文件定位相关页面。
-> Last updated: 2026-05-17 | Total pages: 27(5 guides + 17 concepts + 5 entities)| 5500+ lines
+> Last updated: 2026-05-17 | Total pages: 29(7 guides + 17 concepts + 5 entities)| 5900+ lines
 
 ## 白话导览(Guide)
 
@@ -13,6 +13,8 @@
 - [[glossary]] — 术语速查表:召回 / 排序 / 双塔 / 候选隔离… 一句话解释
 - [[faq]] — 常见疑问:为什么刷到陌生人、广告怎么插进来、点"不感兴趣"有没有用
 - [[how-posts-are-picked]] — 白话:帖子是怎么被选中的(打完分之后的选帖过程)
+- [[operating-myths]] — 运营迷思 vs 源码真相:六个流行运营说法,逐条对源码行号
+- [[posting-guide]] — 发帖指南:从算法机制反推发帖技巧,每条带源码出处与示例
 
 ## 总览
 
@@ -58,6 +60,8 @@
 
 ## Changelog
 
+- [[2026-05-17-posting-guide]] — 新增「发帖指南」页:从算法机制反推发帖技巧,配示例
+- [[2026-05-17-operating-myths]] — 新增「运营迷思 vs 源码真相」页:六个运营说法逐条对源码
 - [[2026-05-17-candidate-selection]] — 新增"选帖过程"页:技术页 candidate-selection + 白话页 how-posts-are-picked
 - [[2026-05-17-plain-language-guide]] — 新增 4 页白话导览(guide/),面向快速理解
 - [[2026-05-16-initial-creation]] — 基于 xai-org/x-algorithm 源码深度分析,初始创建 21 页

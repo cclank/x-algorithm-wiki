@@ -112,6 +112,8 @@ flowchart TB
 
 - [[the-five-components]] —— 五大组件白话速览
 - [[how-posts-are-picked]] —— 选帖收尾过程的白话版
+- [[operating-myths]] —— 运营迷思 vs 源码真相:六个流行说法逐条对源码
+- [[posting-guide]] —— 发帖指南:从算法机制反推发帖技巧
 - [[glossary]] —— 术语速查表
 - [[faq]] —— 常见疑问
 - [[system-architecture]] —— 技术版系统架构总览

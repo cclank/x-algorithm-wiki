@@ -76,5 +76,7 @@ sources: [home-mixer/scorers/ranking_scorer.rs, phoenix/recsys_retrieval_model.p
 
 - [[how-it-works]] —— 端到端白话总览
 - [[the-five-components]] —— 五大组件速览
+- [[operating-myths]] —— 运营迷思 vs 源码真相:逐条对源码行号
+- [[posting-guide]] —— 发帖指南:从算法机制反推发帖技巧
 - [[faq]] —— 常见疑问
 - [[system-architecture]] —— 技术版系统架构

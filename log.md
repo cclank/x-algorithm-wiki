@@ -47,3 +47,18 @@
 - 新增 guide/how-posts-are-picked.md(白话页):选秀收尾类比,附「出处」表
 - index.md / README.md 更新为 27 页;6 个相关页补 [[candidate-selection]] / [[how-posts-are-picked]] 交叉链接
 - 创建 changelog/2026-05-17-candidate-selection.md
+
+## [2026-05-17] create | 运营迷思 vs 源码真相(打脸页 + 站外长文)
+- 反馈:网上 95% 的 X 算法解读是 AI 同质化废话、没翻过源码;要一份带行号、能打脸的高价值内容
+- 新增 guide/operating-myths.md:六个流行运营迷思(多发帖/多互动/破圈/套模板/被大V挤掉/万能攻略)逐条对源码行号,附深层机制清单与"如何识别真解读"方法论
+- 新读源码核对:ranking_scorer.rs(作者多样性衰减、22 行为/5 负权重、OON 降权)、vm_ranker.rs、phoenix/grok.py(候选隔离因果掩码)、顶层 README
+- 配套站外可发布长文:/Users/lank/code/x-algorithm-运营迷思-源码打脸.md(不在 wiki 仓库,供对外发布)
+- index.md / README.md 更新为 28 页;6 个相关页补 [[operating-myths]] 交叉链接
+- 创建 changelog/2026-05-17-operating-myths.md
+
+## [2026-05-17] create | 发帖指南(基于全算法机制)
+- 反馈:基于所有算法机制,出一页发帖指南,涵盖要点与技巧,必要时配例子
+- 新增 guide/posting-guide.md:从召回/排序/过滤/候选隔离/Grox 各机制反推发帖建议,每条对源码行号;含正向信号表、扣分项、破圈、发帖节奏、反面清单、一个完整 before/after 例子
+- 与 operating-myths 配对(立/破);每条建议标机制出处,单列「边界」说明算法只分发不创作
+- index.md / README.md 更新为 29 页;6 个相关页补 [[posting-guide]] 交叉链接
+- 创建 changelog/2026-05-17-posting-guide.md
