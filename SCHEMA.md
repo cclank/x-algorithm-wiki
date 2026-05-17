@@ -20,7 +20,7 @@ X For You 推荐算法 —— X(Twitter)"For You" 信息流推荐系统的架构
 title: 页面标题
 created: YYYY-MM-DD
 updated: YYYY-MM-DD
-type: entity | concept | changelog
+type: entity | concept | guide | changelog
 tags: [来自下方分类法]
 sources: [phoenix/recsys_model.py, home-mixer/scorers/weighted_scorer.rs]
 ---
@@ -40,7 +40,7 @@ sources: [phoenix/recsys_model.py, home-mixer/scorers/weighted_scorer.rs]
 - **广告**: ads, blending, brand-safety, safe-gap
 - **过滤**: filter, visibility-filtering, dedup, social-graph
 - **基础设施**: rust, python, grpc, kafka, strato, async
-- **Meta**: changelog
+- **Meta**: changelog, guide, overview, glossary, faq
 
 ## Page Thresholds
 - **创建页面**:当某个实体 / 概念是一个子系统的核心,或在多个源码文件中出现
@@ -69,6 +69,13 @@ sources: [phoenix/recsys_model.py, home-mixer/scorers/weighted_scorer.rs]
 - FAQ(复杂页面,2-4 条,可选)
 - 源码锚点(文件路径 + 行号或关键函数名)
 - 相关页面(语义化交叉引用,作为最后一章)
+
+## Guide Pages
+面向"快速理解"的白话页,位于 `guide/`。不替代 concept / entity 技术页,而是作为通俗入口层。每页:
+- 用大白话与类比讲清,**不放代码、不放公式**
+- 配 Mermaid 图(适用时)
+- 关键处链接到对应的 concept / entity 技术页,供读者深入
+- frontmatter `type: guide`
 
 ## Update Policy
 当新信息与已有内容冲突时:

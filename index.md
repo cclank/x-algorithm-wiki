@@ -2,7 +2,16 @@
 
 > 内容目录。每个 wiki 页面按类型与分类列出,附一行摘要。
 > 查询前先读此文件定位相关页面。
-> Last updated: 2026-05-16 | Total pages: 21(16 concepts + 5 entities)| 4900+ lines
+> Last updated: 2026-05-17 | Total pages: 25(4 guides + 16 concepts + 5 entities)| 5200+ lines
+
+## 白话导览(Guide)
+
+> 不想读代码、想快速理解整套系统?从这里开始 —— 这几页零代码、多类比。
+
+- [[how-it-works]] — 白话总览:一条帖子怎么一步步走进你的 For You
+- [[the-five-components]] — 五大组件速览:每个组件是干嘛的、为什么需要它
+- [[glossary]] — 术语速查表:召回 / 排序 / 双塔 / 候选隔离… 一句话解释
+- [[faq]] — 常见疑问:为什么刷到陌生人、广告怎么插进来、点"不感兴趣"有没有用
 
 ## 总览
 
@@ -47,4 +56,5 @@
 
 ## Changelog
 
+- [[2026-05-17-plain-language-guide]] — 新增 4 页白话导览(guide/),面向快速理解
 - [[2026-05-16-initial-creation]] — 基于 xai-org/x-algorithm 源码深度分析,初始创建 21 页

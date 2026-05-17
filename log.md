@@ -26,3 +26,10 @@
 ## [2026-05-16] create | index、README、changelog
 - 创建 index.md(分类目录)、README.md(badges + 目录 + 统计)
 - 创建 changelog/2026-05-16-initial-creation.md
+
+## [2026-05-17] create | 白话导览(guide/,4 页)
+- 反馈:原 21 页技术性/代码性偏强,缺"快速理解"层
+- 新增 guide/ 页面类型(零代码、多类比):how-it-works、the-five-components、glossary、faq
+- SCHEMA.md 增 guide 类型与「Guide Pages」章;index.md / README.md 增「白话导览」分类
+- system-architecture.md 相关页面增到 how-it-works 的链接
+- 创建 changelog/2026-05-17-plain-language-guide.md
