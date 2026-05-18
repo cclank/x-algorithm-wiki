@@ -95,3 +95,12 @@
 - 读者问:被恶意刷"不感兴趣"会不会害到自己
 - faq 新增一条:打分用的是模型对每个浏览者的预测、非事件计数;RankingScorer 无"按某帖负反馈次数扣分"路径;刷负反馈改不了你的帖给第三方的分;边界——训练管线不在开源仓库
 - 收紧"举报会压制吗"答案里"举报多→分数低"的模糊措辞,改为"模型预测、非计数"
+
+## [2026-05-18] create | 话题扩充:5 新页 + operating-myths 增 3 迷思
+- 反馈:列出"还值得写的话题",获准做 A/B/C 三组
+- B 组并入 operating-myths(六迷思 → 九迷思):迷思七 外链降权、迷思八 Premium 加权、迷思九 特定账号后门 —— 均逐条对源码(grep elon/musk 零命中、22 权重无订阅/外链项)
+- operating-myths 迷思二补「预测 ≠ 计数」澄清(承接读者对"恶意刷不感兴趣"的疑问)
+- A 组 3 新页(guide):visibility-and-shadowban、new-account-cold-start、your-data
+- C 组 2 新页:end-to-end-dataflow(concept)、open-source-vs-production(guide)
+- 5 新页由 5 个并行 agent 按源码核验创建,逐页复核源码锚点;index/README 更新为 34 页(6800+ 行)
+- 创建 changelog/2026-05-18-topic-expansion.md

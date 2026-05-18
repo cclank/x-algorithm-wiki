@@ -142,4 +142,5 @@ ranked = np.argsort(-weighted)
 - [[phoenix-ranking]] —— 排序阶段的 transformer
 - [[recsys-model]] / [[recsys-retrieval-model]] —— 被加载的两个模型构件
 - [[hash-based-embeddings]] —— `build_hash_functions` / `build_unified_emb_table`
+- [[open-source-vs-production]] —— 开源版 vs 线上真实算法:本脚本用的迷你模型与冻结 checkpoint 等差异
 - [[system-architecture]] —— 召回→排序在整体系统中的位置

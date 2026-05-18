@@ -112,8 +112,11 @@ flowchart TB
 
 - [[the-five-components]] —— 五大组件白话速览
 - [[how-posts-are-picked]] —— 选帖收尾过程的白话版
-- [[operating-myths]] —— 运营迷思 vs 源码真相:六个流行说法逐条对源码
+- [[operating-myths]] —— 运营迷思 vs 源码真相:九个流行说法逐条对源码
 - [[posting-guide]] —— 发帖指南:从算法机制反推发帖技巧
+- [[visibility-and-shadowban]] —— 限流与 shadowban:算法里到底有哪些"不展示你"的机制
+- [[your-data]] —— 算法到底用了你的哪些数据
+- [[end-to-end-dataflow]] —— 端到端数据流:一条帖子从发布到被推荐
 - [[glossary]] —— 术语速查表
 - [[faq]] —— 常见疑问
 - [[system-architecture]] —— 技术版系统架构总览

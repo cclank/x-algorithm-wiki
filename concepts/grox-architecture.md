@@ -178,3 +178,4 @@ A:写入下游存储(如 Manhattan 的统一帖子注解、嵌入 sink),供 [[ho
 - [[multimodal-embedders]] —— 嵌入类 Plan 调用的多模态嵌入器
 - [[system-architecture]] —— Grox 作为旁路服务的定位
 - [[ads-blending]] —— 消费 Grox 安全标签的下游之一
+- [[end-to-end-dataflow]] —— 端到端数据流:Grox 旁路管线如何与 feed 请求路径汇合

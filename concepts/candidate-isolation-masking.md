@@ -124,3 +124,4 @@ A:代码用 `jnp.tril`,U+H 段实际是因果注意力。README 图示称"双向
 - [[phoenix-retrieval]] —— 不使用候选隔离的召回模型
 - [[recsys-model]] —— `PhoenixModel` 如何传入 offset
 - [[operating-myths]] —— 运营迷思 vs 源码真相:候选隔离打穿"被大V挤掉"的说法
+- [[open-source-vs-production]] —— 开源版 vs 线上真实算法:本掩码等机制在开源与线上的差异

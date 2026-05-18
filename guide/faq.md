@@ -75,5 +75,8 @@ ML 部分(Phoenix)可以 —— 仓库带一个端到端推理脚本和一个迷
 - [[how-posts-are-picked]] —— 白话:帖子是怎么被选中的
 - [[operating-myths]] —— 运营迷思 vs 源码真相:逐条对源码行号
 - [[posting-guide]] —— 发帖指南:从算法机制反推发帖技巧
+- [[visibility-and-shadowban]] —— 限流与 shadowban:民间说法逐条对源码对质
+- [[your-data]] —— 算法到底用了你的哪些数据
+- [[open-source-vs-production]] —— 开源版 vs 线上真实算法:已知差异清单
 - [[glossary]] —— 术语速查表
 - [[system-architecture]] —— 技术版系统架构

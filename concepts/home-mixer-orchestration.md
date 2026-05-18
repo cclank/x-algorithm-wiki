@@ -198,6 +198,8 @@ A:能。`ScoredPostsService` 就是直接暴露内层 `PhoenixCandidatePipeline`
 ## 相关页面
 
 - [[system-architecture]] —— 整体两层流水线与十阶段总览
+- [[end-to-end-dataflow]] —— 端到端数据流:home-mixer 编排的一次请求从头到尾
+- [[your-data]] —— 算法用了你的哪些数据:`ScoredPostsQuery` 各字段从用户侧的来源
 - [[candidate-pipeline-framework]] —— 流水线框架的 trait 设计
 - [[candidate-pipeline]] —— `CandidatePipeline` 执行器
 - [[filtering-pipeline]] —— 内层流水线的过滤器

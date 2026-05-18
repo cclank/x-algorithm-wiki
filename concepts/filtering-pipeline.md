@@ -158,4 +158,5 @@ A:框架在 `run_filters` 里 `filter(|f| f.enable(query))` 直接跳过,并在 
 - [[home-mixer-orchestration]] —— 过滤器在内层流水线中的装配位置
 - [[scoring-and-ranking]] —— 过滤之后的打分阶段
 - [[candidate-selection]] —— 选后两道过滤所在的选择阶段
+- [[visibility-and-shadowban]] —— 限流与 shadowban:这些过滤器从"压制创作者"角度怎么解读
 - [[system-architecture]] —— 过滤在十阶段流水线中的位置

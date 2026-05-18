@@ -147,3 +147,4 @@ A:是,`thunder` 一个二进制,靠 `is_serving` 参数决定扮演哪个角色(
 - [[post-store]] —— `PostStore` 结构体细节
 - [[system-architecture]] —— Thunder 作为站内候选源的角色
 - [[home-mixer-orchestration]] —— `ThunderSource` 如何调用 Thunder
+- [[end-to-end-dataflow]] —— 端到端数据流:Kafka 摄入是一条帖子"被推荐"链路的起点

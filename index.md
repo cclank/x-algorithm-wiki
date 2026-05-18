@@ -2,7 +2,7 @@
 
 > 内容目录。每个 wiki 页面按类型与分类列出,附一行摘要。
 > 查询前先读此文件定位相关页面。
-> Last updated: 2026-05-18 | Total pages: 29(7 guides + 17 concepts + 5 entities)| 5900+ lines
+> Last updated: 2026-05-18 | Total pages: 34(11 guides + 18 concepts + 5 entities)| 6800+ lines
 
 ## 白话导览(Guide)
 
@@ -13,12 +13,17 @@
 - [[glossary]] — 术语速查表:召回 / 排序 / 双塔 / 候选隔离… 一句话解释
 - [[faq]] — 常见疑问:为什么刷到陌生人、广告怎么插进来、点"不感兴趣"有没有用
 - [[how-posts-are-picked]] — 白话:帖子是怎么被选中的(打完分之后的选帖过程)
-- [[operating-myths]] — 运营迷思 vs 源码真相:六个流行运营说法,逐条对源码行号
+- [[operating-myths]] — 运营迷思 vs 源码真相:九个流行运营说法,逐条对源码行号
 - [[posting-guide]] — 发帖指南:从算法机制反推发帖技巧,每条带源码出处与示例
+- [[visibility-and-shadowban]] — 限流与 shadowban:源码级真相,民间说法逐条对质
+- [[new-account-cold-start]] — 新号与冷启动:算法怎么区别对待新账号
+- [[your-data]] — 算法用了你的哪些数据:开源代码所示的输入清单
+- [[open-source-vs-production]] — 开源版 vs 线上真实算法:已知差异清单
 
 ## 总览
 
 - [[system-architecture]] — For You 信息流端到端:两层流水线嵌套、十阶段、召回+排序、五大组件
+- [[end-to-end-dataflow]] — 端到端数据流:一条帖子从发布到被推荐,写入侧(异步)vs 读取侧(实时)
 
 ## Concepts
 
@@ -60,6 +65,7 @@
 
 ## Changelog
 
+- [[2026-05-18-topic-expansion]] — 新增 5 页(限流真相 / 新号冷启动 / 数据使用 / 数据流 / 开源vs生产)+ operating-myths 增 3 迷思
 - [[2026-05-17-posting-guide]] — 新增「发帖指南」页:从算法机制反推发帖技巧,配示例
 - [[2026-05-17-operating-myths]] — 新增「运营迷思 vs 源码真相」页:六个运营说法逐条对源码
 - [[2026-05-17-candidate-selection]] — 新增"选帖过程"页:技术页 candidate-selection + 白话页 how-posts-are-picked

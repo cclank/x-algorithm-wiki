@@ -176,9 +176,11 @@ flowchart LR
 
 ## 相关页面
 
-- [[operating-myths]] —— 配对页:六个流行运营迷思,逐条对源码
+- [[operating-myths]] —— 配对页:九个流行运营迷思,逐条对源码
 - [[how-it-works]] —— 端到端白话总览:帖子怎么走进 For You
 - [[scoring-and-ranking]] —— 打分三步:加权求和 / 多样性衰减 / OON 降权
 - [[filtering-pipeline]] —— 17 个过滤器:哪些帖子会被直接踢掉
 - [[phoenix-retrieval]] —— 双塔召回:站外触达的技术通道
+- [[visibility-and-shadowban]] —— 限流与 shadowban:别把召回不力误判成"被限流"
+- [[new-account-cold-start]] —— 新号与冷启动:算法怎么区别对待新账号
 - [[system-architecture]] —— 技术版系统架构总览

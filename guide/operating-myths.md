@@ -1,10 +1,10 @@
 ---
 title: 运营迷思 vs 源码真相
 created: 2026-05-17
-updated: 2026-05-17
+updated: 2026-05-18
 type: guide
 tags: [guide, overview, myths, scoring, ranking]
-sources: [README.md, home-mixer/scorers/ranking_scorer.rs, home-mixer/scorers/vm_ranker.rs, phoenix/grok.py, phoenix/recsys_retrieval_model.py, home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs]
+sources: [README.md, home-mixer/scorers/ranking_scorer.rs, home-mixer/scorers/vm_ranker.rs, home-mixer/filters/ineligible_subscription_filter.rs, phoenix/grok.py, phoenix/recsys_retrieval_model.py, home-mixer/candidate_pipeline/phoenix_candidate_pipeline.rs]
 ---
 
 # 运营迷思 vs 源码真相
@@ -20,7 +20,7 @@ sources: [README.md, home-mixer/scorers/ranking_scorer.rs, home-mixer/scorers/vm
 
 > 想先看整体怎么运转:[[how-it-works]];打分细节:[[scoring-and-ranking]]。
 
-## 六个流行迷思,逐条对源码
+## 九个流行迷思,逐条对源码
 
 ### 迷思一|「多发帖 = 多曝光」
 
@@ -37,6 +37,8 @@ sources: [README.md, home-mixer/scorers/ranking_scorer.rs, home-mixer/scorers/vm
 **源码怎么说**:最终分是 22 种**预测行为概率**的加权和(`ranking_scorer.rs:125-170`)。其中 5 个是负向行为 —— `not_interested`(点了"不感兴趣")、`block_author`、`mute_author`、`report`、`not_dwelled`(刷到没停留就划走),权重为负,汇成 `negative_sum = -(...)`(`ranking_scorer.rs:83`)。README 自己也写:负向行为「have negative weights, pushing down content the user would likely dislike」(`README.md:292`)。
 
 **所以**:算法算的是"正向行为概率 − 负向行为概率"的加权结果,不是"互动总量"。靠标题党、骗点击换来的互动,如果同时招来大量"划走""不感兴趣""举报",加权分会被直接拉低甚至变负。反直觉的一点:**"没人理"不是最差的;"很多人划走/举报"才是最差的** —— `not_dwelled`("划走没停留")被显式建模成一个扣分项。
+
+**关键澄清:扣的是"预测",不是"计数"。** 这里被负权重乘的 `not_interested`、`report` 等,是模型**预测的概率**(模型估计"这位浏览者会不会做这个动作"),不是"这条帖被多少人实际点过"的计数 —— `RankingScorer` 读的是模型预测,源码里没有"按某帖负反馈次数扣它分"的入口。所以负反馈反映的是"内容本身招不招人烦"的预测,**不是一个能被别人恶意刷的计数器**。详见 [[faq]]。
 
 ### 迷思三|「做泛内容就能轻松破圈」
 
@@ -78,6 +80,30 @@ sources: [README.md, home-mixer/scorers/ranking_scorer.rs, home-mixer/scorers/vm
 
 **所以**:不存在一张固定的"权重表"。同一条内容对不同用户分数不同(各自行为历史不同);今天和下个月的权重也可能不同(参数可调,还在实验)。任何"算法就吃这一套"的通用攻略,在一个 per-user、参数化、还在 A/B 的系统面前,都是刻舟求剑。
 
+### 迷思七|「带外链的帖子会被降权」
+
+**流行说法**:贴了外部链接的帖子,算法会压低它的曝光。
+
+**源码怎么说**:翻打分、过滤、内容理解三侧,**没有任何针对"帖子带不带外链"的机制**。打分侧 —— `RankingScorer` 的 22 个行为权重(`ranking_scorer.rs:12-39`)无一与链接有关,打分模型"无手工特征"(`README.md:55`),连"这帖有无链接"都不是它的输入;过滤侧 —— 17 个过滤器(见 [[filtering-pipeline]])没有"外链过滤器",候选水合也不水合"有无外链"这种属性;内容理解侧 —— Grox 的分类器是 spam / 安全 / 质量 / 回复打分(见 [[grox-classifiers]]),没有"链接分类器"。
+
+**所以**:在这份开源代码里,"带外链 → 降权"这个机制**不存在**。带链接和不带链接的帖子走同一套召回 / 过滤 / 打分。唯一沾边的间接情形:一条帖子若整体被 Grox 判成 spam,会因"是垃圾"被处理 —— 那是判垃圾,不是判链接。
+
+### 迷思八|「Premium / 蓝V 花钱能买曝光」
+
+**流行说法**:开会员(Premium / 蓝V)能直接买到更高的排序权重。
+
+**源码怎么说**:`RankingScorer` 的 22 个行为权重(`ranking_scorer.rs:12-39`)里没有"订阅 / 会员 / verified"这一项,打分侧也不把"作者是不是会员"喂给模型。订阅在源码里只有两个角色:① `IneligibleSubscriptionFilter`(`ineligible_subscription_filter.rs:6`)过滤"订阅专属帖" —— 非订阅者看不到某作者的订阅专属内容;这是一道**可见性门槛**,方向是**收窄**触达、不是加权。② 广告注入日志里记录用户的订阅档位(`ads_injection_logging_side_effect.rs:129-130`)—— 记日志,不是排序。
+
+**所以**:在这份开源代码里,**没有"会员 → 排序加分"这条路径**。会员买到的是订阅专属内容等产品功能,不是源码层面的一个曝光乘数。
+
+### 迷思九|「算法给某些大账号(比如老板)开后门」
+
+**流行说法**:算法里藏着对特定账号(最常见的猜测就是 Elon 本人)的硬编码加权。
+
+**源码怎么说**:对整个 `x-algorithm` 仓库 grep `elon` / `musk` —— **零命中**。`RankingScorer` 的输入是 22 种行为预测概率 + 作者多样性位置计数 + 是否站内,没有"作者 ID 白名单"这种东西。唯一的作者级机制是**作者多样性衰减**,它对所有作者用同一个公式,且方向是"同一作者出现多了就降分"(`ranking_scorer.rs:186-217`)—— 对称的,甚至对高频账号更不利。再加上"删光每一个手工特征"(`README.md:55, 324-325`):一个 author-specific 的加权,正是典型的手工特征,结构上没有它的位置。
+
+**所以**:在这份开源代码里,**没有针对特定账号的硬编码后门**。(可对照:2023 年 X 上一次开源算法时,代码里曾被发现有按个别账号区分的标记、引发广泛讨论;这次的 `x-algorithm`,grep 遍全仓找不到任何这类东西。边界:线上 feature switch 配置不在仓库,但代码"无手工特征"的结构,决定了没有放这种后门的常规位置。)
+
 ## 那些真正在起作用、却很少被提的机制
 
 大多数解读连这套系统真正的"关键词"都没提到 —— 七个机制,各配一个例子:
@@ -100,7 +126,7 @@ sources: [README.md, home-mixer/scorers/ranking_scorer.rs, home-mixer/scorers/vm
 
 所以本页所有结论都是**机制层面**的("方向是降权""这是负权重"),不是**数值层面**的("降到几折""涨多少")。承认这条边界,本身就是和那 95% 的区别。
 
-## 总结:六个迷思,错在同一处
+## 总结:九个迷思,错在同一处
 
 **逐条对照:**
 
@@ -112,10 +138,13 @@ sources: [README.md, home-mixer/scorers/ranking_scorer.rs, home-mixer/scorers/vm
 | 套模板 / 堆关键词骗算法 | 打分侧删光了手工特征 —— 没有规则可套 |
 | 被同批大 V 挤掉 | 候选隔离:你的分只取决于"你的帖子 × 这个用户" |
 | 有一套万能涨号攻略 | 打分是 per-user 的、权重是可变参数 —— 没有固定打法 |
+| 带外链的帖子被降权 | 打分 / 过滤 / Grox 三侧都没有针对"外链"的机制 |
+| Premium 花钱买曝光 | 22 个权重无订阅项;订阅只做"专属帖可见性门槛",不加权 |
+| 算法给大账号开后门 | 全仓 grep 无 elon/musk;打分输入无作者身份特例 |
 
 **结论:**
 
-六个迷思,错在同一处 —— 它们都把算法想象成**一个可以靠技巧去迎合、去绕过的守门人**。
+九个迷思,错在同一处 —— 它们都把算法想象成**一个可以靠技巧去迎合、去绕过、或暗中开后门的守门人**。
 
 源码给的答案正相反:
 
@@ -140,6 +169,9 @@ sources: [README.md, home-mixer/scorers/ranking_scorer.rs, home-mixer/scorers/vm
 | 候选隔离:因果掩码 + 候选间互不可见 | `phoenix/grok.py:39-71`、`README.md:327-328` |
 | 权重全部来自 feature switch 参数 | `ranking_scorer.rs:42-66` |
 | `VMRanker` 由 `EnableVMRanker` 门控 | `vm_ranker.rs:18-20` |
+| 外链:打分 / 过滤 / Grox 三侧均无"外链"机制 | `ranking_scorer.rs:12-39`、[[filtering-pipeline]]、[[grox-classifiers]] |
+| Premium:无订阅打分加权,订阅只做可见性门槛 | `home-mixer/filters/ineligible_subscription_filter.rs:6` |
+| 无特定账号硬编码后门:全仓 grep 无 elon/musk | `home-mixer/scorers/ranking_scorer.rs:12-39` |
 
 精确语义以技术页与源码为准;每条「详见」的技术页都附 `文件:行号` 锚点。
 
@@ -151,5 +183,7 @@ sources: [README.md, home-mixer/scorers/ranking_scorer.rs, home-mixer/scorers/vm
 - [[phoenix-retrieval]] —— 双塔召回:破圈的第一道关
 - [[candidate-isolation-masking]] —— 候选隔离掩码的技术细节
 - [[filtering-pipeline]] —— 17 个过滤器:打分靠学习、过滤靠规则
+- [[visibility-and-shadowban]] —— 限流与 shadowban:民间"shadowban"说法逐条对源码
+- [[open-source-vs-production]] —— 开源版 vs 线上真实算法:本页边界的完整清单
 - [[faq]] —— 常见疑问
 - [[system-architecture]] —— 技术版系统架构总览

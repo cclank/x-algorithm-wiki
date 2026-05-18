@@ -441,4 +441,5 @@ A:`grok.py:362` 注释明确"Attention softmax is always carried out in fp32"。
 - [[phoenix-retrieval]] —— 召回模型,用户塔复用同一个 transformer 骨架
 - [[recsys-model]] —— `PhoenixModel` 实体,把哈希嵌入、本骨架、输出头串成排序模型
 - [[run-pipeline]] —— 端到端运行器,从 `config.json` 构造 `TransformerConfig`
+- [[open-source-vs-production]] —— 开源版 vs 线上真实算法:本骨架去掉 MoE 等差异的完整清单
 - [[system-architecture]] —— Phoenix 在整个 For You 系统中的位置

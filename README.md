@@ -3,8 +3,8 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Wiki-x--algorithm-blue?style=for-the-badge&logo=markdown" alt="Wiki" height="28">
   <img src="https://img.shields.io/badge/Source-xai--org%2Fx--algorithm-green?style=for-the-badge&logo=github" alt="Source" height="28">
-  <img src="https://img.shields.io/badge/Knowledge_Base-29_pages-orange?style=for-the-badge&logo=obsidian" alt="Knowledge Base" height="28">
-  <img src="https://img.shields.io/badge/Content-5900%2B_lines-purple?style=for-the-badge" alt="Content" height="28">
+  <img src="https://img.shields.io/badge/Knowledge_Base-34_pages-orange?style=for-the-badge&logo=obsidian" alt="Knowledge Base" height="28">
+  <img src="https://img.shields.io/badge/Content-6800%2B_lines-purple?style=for-the-badge" alt="Content" height="28">
   <img src="https://img.shields.io/badge/Verified-Source_Code-brightgreen?style=for-the-badge" alt="Verified" height="28">
   <a href="https://lansu-wiki-web.lank.workers.dev/wiki/cclank/x-algorithm-wiki#index"><img src="https://img.shields.io/badge/Live_Preview-Open-1f6feb?style=for-the-badge&logo=cloudflare&logoColor=white" alt="Live Preview" height="28"></a>
 </p>
@@ -16,7 +16,7 @@
 
 ## 这是什么
 
-X(Twitter)开源的 "For You" 信息流推荐系统由五大组件构成 —— 编排层、流水线框架、站内帖子库、ML 召回/排序、内容理解服务。本 wiki 把这套系统的架构与实现拆成 29 个相互链接的页面:**7 页零代码的「白话导览」** + 22 页源码级技术页。
+X(Twitter)开源的 "For You" 信息流推荐系统由五大组件构成 —— 编排层、流水线框架、站内帖子库、ML 召回/排序、内容理解服务。本 wiki 把这套系统的架构与实现拆成 34 个相互链接的页面:**11 页零代码的「白话导览」** + 23 页源码级技术页。
 
 - **想快速理解整套系统**:从白话导览读起 —— [how-it-works](guide/how-it-works.md)
 - **想看技术细节**:入口页 [system-architecture](concepts/system-architecture.md)
@@ -26,19 +26,24 @@ X(Twitter)开源的 "For You" 信息流推荐系统由五大组件构成 —— 
 
 ## 目录
 
-### 白话导览 · 先读这个(7 页,零代码)
+### 白话导览 · 先读这个(11 页,零代码)
 
 - [how-it-works](guide/how-it-works.md) — 白话总览:一条帖子怎么一步步走进你的 For You
 - [the-five-components](guide/the-five-components.md) — 五大组件速览:各组件是干嘛的、为什么需要它
 - [glossary](guide/glossary.md) — 术语速查表:召回 / 排序 / 双塔 / 候选隔离… 一句话解释
 - [faq](guide/faq.md) — 常见疑问:为什么刷到陌生人、广告怎么插进来、负反馈有什么用
 - [how-posts-are-picked](guide/how-posts-are-picked.md) — 白话:帖子是怎么被选中的(选帖过程)
-- [operating-myths](guide/operating-myths.md) — 运营迷思 vs 源码真相:六个流行运营说法,逐条对源码行号
+- [operating-myths](guide/operating-myths.md) — 运营迷思 vs 源码真相:九个流行运营说法,逐条对源码行号
 - [posting-guide](guide/posting-guide.md) — 发帖指南:从算法机制反推发帖技巧,每条带源码出处与示例
+- [visibility-and-shadowban](guide/visibility-and-shadowban.md) — 限流与 shadowban:源码级真相,民间说法逐条对质
+- [new-account-cold-start](guide/new-account-cold-start.md) — 新号与冷启动:算法怎么区别对待新账号
+- [your-data](guide/your-data.md) — 算法用了你的哪些数据:开源代码所示的输入清单
+- [open-source-vs-production](guide/open-source-vs-production.md) — 开源版 vs 线上真实算法:已知差异清单
 
-### 总览(1 页)
+### 总览(2 页)
 
 - [system-architecture](concepts/system-architecture.md) — For You 端到端:两层流水线嵌套、十阶段、召回+排序、五大组件
+- [end-to-end-dataflow](concepts/end-to-end-dataflow.md) — 端到端数据流:一条帖子从发布到被推荐,写入侧(异步)vs 读取侧(实时)
 
 ### 在线服务 · Rust(6 页)
 
@@ -82,10 +87,10 @@ X(Twitter)开源的 "For You" 信息流推荐系统由五大组件构成 —— 
 
 | 指标 | 数值 |
 |------|------|
-| **白话导览页** | 7 |
-| **概念页面** | 17 |
+| **白话导览页** | 11 |
+| **概念页面** | 18 |
 | **实体页面** | 5 |
-| **总行数** | 5900+ |
+| **总行数** | 6800+ |
 | **源码版本** | `xai-org/x-algorithm` @ `0bfc279`(2026-05-15 release) |
 | **最后更新** | 2026-05-18 |
 
@@ -98,7 +103,7 @@ X(Twitter)开源的 "For You" 信息流推荐系统由五大组件构成 —— 
 - 复杂页面附 FAQ;统一「相关页面」交叉引用
 - Wiki `[[links]]` 交叉链接,支持 Obsidian 导航
 - 核对中发现的源码/文档出入已在 [changelog](changelog/2026-05-16-initial-creation.md) 记录
-- 另有 7 页「白话导览」(`guide/`):零代码、多类比,面向快速理解,与技术页双向链接
+- 另有 11 页「白话导览」(`guide/`):零代码、多类比,面向快速理解,与技术页双向链接
 
 ## 使用方式
 
